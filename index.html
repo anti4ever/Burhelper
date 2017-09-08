@@ -15,7 +15,9 @@
     <!-- Bootstrap JS -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- Работа с числами с плавающей точкой -->
-    <script src="scripts/big.min.js"></script>    
+    <script src="scripts/big.min.js"></script>
+    <!-- Подключение Vue.js -->
+    <script src="scripts/vue.js"></script> 
 </head>
 <body>
     <br>
@@ -25,8 +27,9 @@
             <b><a href="#">Burhelper.ru</a></b>
             <h1>Расчеты в бурении</h1>
             <small>Мини утилиты на каждый день.</small>
+            <button class="btn btn-primary btn-block">На главную страницу</button>
         </div>
-            <div>
+            <div id="mainapp">
 
             </div>
         <div class="well well-sm text-center">
@@ -36,5 +39,17 @@
             <p><small>Cоздано с помощю <a href="http://getbootstrap.com">Bootstrap</a> , <a href="http://jquery.com/">jQuerty</a> и <a href="https://github.com/MikeMcl/big.js">Big.js.</a></small></p>
         </div>
     </div>
+    <!-- Создание приложения на Vue.js -->
+    <script>
+        var vm1 = new Vue ({
+            el: "#mainapp",
+            data: {
+
+            },
+            methods:{
+
+            }
+        })
+    </script>
 </body>
 </html>
