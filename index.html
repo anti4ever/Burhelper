@@ -22,15 +22,17 @@
 <body>
     <br>
     <div class="container">
-        <!--Изменение максимальной ширины на 450px (стандартно 750px)-->
+        <!--Изменение максимальной ширины на 450px (стандартно 750px) через класс "container"-->
         <div class="well well-sm text-center">
             <b><a href="#">Burhelper.ru</a></b>
             <h1>Расчеты в бурении</h1>
             <small>Мини утилиты на каждый день.</small>
+            <br>            
             <button class="btn btn-primary btn-block">На главную страницу</button>
         </div>
             <div id="mainapp">
-
+                <button v-on:click="gethtml" class="btn btn-primary btn-block">Загрузить html</button>
+                <div class="testhtml"></div>
             </div>
         <div class="well well-sm text-center">
             <p><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="color: red;"></span> Нашли ошибку: <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
@@ -47,9 +49,14 @@
 
             },
             methods:{
-
-            }
-        })
+                gethtml: function () {
+                           $(".testhtml").load("modules/test_module/test_module.html") //Это работает!
+                            // $.get("modules/test_module/test_module.html", function( data ) {
+                            //                 $( ".testhtml" ).html( data );
+                            //                 alert( "Load was performed." );
+                                    }
+                    }
+                        })
     </script>
 </body>
 </html>
