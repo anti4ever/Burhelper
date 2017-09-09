@@ -30,10 +30,12 @@
             <br>            
             <button class="btn btn-primary btn-block">На главную страницу</button>
         </div>
+
             <div id="mainapp">
                 <button v-on:click="gethtml" class="btn btn-primary btn-block">Загрузить html</button>
                 <div class="testhtml"></div>
             </div>
+
         <div class="well well-sm text-center">
             <p><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="color: red;"></span> Нашли ошибку: <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
             <p><span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span> Есть предложения по новым
@@ -43,14 +45,23 @@
     </div>
     <!-- Создание приложения на Vue.js -->
     <script>
-        var vm1 = new Vue ({
+        var module = true; // Переменная для проверки создан уже экземпляр Vue c именем module
+        // Создание основного экземпляра (главного приложения) Vue c именем "vm" с привязкой к id "maimapp"
+        var vm = new Vue ({
             el: "#mainapp",
             data: {
 
             },
             methods:{
                 gethtml: function () {
-                           $(".testhtml").load("modules/test_module/test_module.html") //Это работает!
+                          if (module == true) {
+                            $(".testhtml").load("modules/test_module/test_module.html"); //Это работает!
+                          }
+                          else {
+                            module.$destroy();
+                          }
+                           
+                           
                             // $.get("modules/test_module/test_module.html", function( data ) {
                             //                 $( ".testhtml" ).html( data );
                             //                 alert( "Load was performed." );
