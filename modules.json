@@ -1,0 +1,13 @@
+{
+    "pressure": {
+        "name": "Давление",
+        "description": "Конвертер единиц измерения давления",
+        "dir": "modules/test_module/test_module.html"
+                },
+
+    "permeability": {
+        "name": "Проницаемость",
+        "description": "Конвертер единиц измерения проницаемости горных пород",
+        "dir": "modules/permeability/module.html"
+                    }               
+}
