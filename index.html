@@ -71,18 +71,18 @@
             },
             methods:{
                 gethtml: function (dir) {
-                          if (vm.moduletrigger == true) {
+                          if (this.moduletrigger == true) {
                               $(".gethtmlmodule").load(dir);
                                console.log(dir);//Это работает!
-                               vm.moduletrigger=false;
-                               console.log(vm.moduletrigger);
+                               this.moduletrigger=false;
+                               console.log(this.moduletrigger);
                                console.log("ветка true");
                           }
                           else {
                             //module.$destroy();
                             $(".gethtmlmodule").load(dir);
                             console.log(dir);//Это работает!
-                            console.log(vm.moduletrigger);
+                            console.log(this.moduletrigger);
                             console.log("ветка else");
                           }
                            
