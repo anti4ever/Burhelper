@@ -31,6 +31,11 @@
             <button class="btn btn-primary btn-block">На главную страницу</button>
         </div>
 
+        <div class="buttoncase well well-sm text-center">
+            <button v-for="value in modulesinfo" :dir="value.dir" :title="value.description" class="btn btn-primary btn-block">{{value.name}}</button>
+            <!-- :name=value.name -->
+        </div>
+
             <div>
                 <button v-on:click="gethtml" class="btn btn-primary btn-block">Загрузить html</button>
                 <div class="gethtmlmodule"></div>
@@ -45,17 +50,23 @@
     </div>
     <!-- Создание приложения на Vue.js -->
     <script>
-        var module = true; // Переменная для проверки создан уже экземпляр Vue c именем module
-        var modulesinfo; // Переменная для загрузки массива данных о модулях
-        $.getJSON("modules.json", function(data){ // Загрузка modules.json
-            modulesinfo = data;
-        }); 
+        var module = true; // Переменная для проверки - создан уже экземпляр Vue c именем module
+        // var modulesinfo; // Переменная для загрузки массива данных о модулях
+        //  $.getJSON("modules.json", function(data){ // Загрузка modules.json
+        //   modulesinfo = data;
+        // }); 
+
+        //Компонент шаблона кнопки для вызова модуля ПОКА НЕ ПРИГОДИЛСЯ
+        // Vue.component ("buttonmodule", { //Тэг шаблона
+        //     props: ['name','description','dir'],//Входные параметры
+        //     template: '<button class="btn btn-primary btn-block">{{name}}</button>' // Шаблон
+        // });
 
         // Создание основного экземпляра (главного приложения) Vue c именем "vm" с привязкой к id "maimapp"
         var vm = new Vue ({
             el: "#mainapp",
             data: {
-               
+                modulesinfo: Object
             },
             methods:{
                 gethtml: function () {
@@ -67,7 +78,13 @@
                           }
                            
                                     }
-                    }
+                    },
+             mounted: function() {
+               $.getJSON("modules.json", function(data){ // Загрузка modules.json
+             vm.modulesinfo = data;
+             console.log(vm.modulesinfo);
+      }) 
+            }
                         })
     </script>
 </body>
