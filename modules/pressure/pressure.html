@@ -1,15 +1,18 @@
 <div class="module">
-<h3>Это тестовый модуль</h3>
+<h3>ДАВЛЕНИЕ</h3>
 <p>Здесь мы будем тестировать ajax запрос и работу подогружаемонго модуля.</p>
 </div>
 <script>
     var module = new Vue ({
         el: ".module",
         data: {
-
+            a: 2,
+            b: 2
         },
-        methots: {
-
+        methods:{
+            test_func: function(){
+                console.log(this.a+this.b);
+            }
         }
     })
 </script>

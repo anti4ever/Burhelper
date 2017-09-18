@@ -32,14 +32,12 @@
         </div>
 
         <div class="buttoncase well well-sm text-center">
-            <button v-for="value in modulesinfo" :dir="value.dir" :title="value.description" class="btn btn-primary btn-block">{{value.name}}</button>
-            <!-- :name=value.name -->
+            <button v-on:click="gethtml(value.dir)" v-for="value in modulesinfo" :dir="value.dir" :title="value.description" class="btn btn-primary btn-block">{{value.name}}</button>
+            
         </div>
-
-            <div>
-                <button v-on:click="gethtml" class="btn btn-primary btn-block">Загрузить html</button>
-                <div class="gethtmlmodule"></div>
-            </div>
+        <div class="gethtmlmodule"></div>
+            <!-- Тестовая кнопка для загрузки html с кодом модуля -->
+            
 
         <div class="well well-sm text-center">
             <p><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="color: red;"></span> Нашли ошибку: <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
@@ -50,7 +48,8 @@
     </div>
     <!-- Создание приложения на Vue.js -->
     <script>
-        var module = true; // Переменная для проверки - создан уже экземпляр Vue c именем module
+        //var module = true; // Переменная для проверки - создан уже экземпляр Vue c именем module
+        
         // var modulesinfo; // Переменная для загрузки массива данных о модулях
         //  $.getJSON("modules.json", function(data){ // Загрузка modules.json
         //   modulesinfo = data;
@@ -66,15 +65,25 @@
         var vm = new Vue ({
             el: "#mainapp",
             data: {
-                modulesinfo: Object
+                modulesinfo: Object,
+                dir: String,
+                moduletrigger:true
             },
             methods:{
-                gethtml: function () {
-                          if (module == true) {
-                              $(".gethtmlmodule").load("modules/test_module/test_module.html"); //Это работает!
+                gethtml: function (dir) {
+                          if (vm.moduletrigger == true) {
+                              $(".gethtmlmodule").load(dir);
+                               console.log(dir);//Это работает!
+                               vm.moduletrigger=false;
+                               console.log(vm.moduletrigger);
+                               console.log("ветка true");
                           }
                           else {
-                            module.$destroy();
+                            //module.$destroy();
+                            $(".gethtmlmodule").load(dir);
+                            console.log(dir);//Это работает!
+                            console.log(vm.moduletrigger);
+                            console.log("ветка else");
                           }
                            
                                     }
@@ -82,7 +91,7 @@
              mounted: function() {
                $.getJSON("modules.json", function(data){ // Загрузка modules.json
              vm.modulesinfo = data;
-             console.log(vm.modulesinfo);
+             //console.log(vm.modulesinfo);
       }) 
             }
                         })

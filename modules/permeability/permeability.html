@@ -1,0 +1,18 @@
+<div class="module">
+<h3>ПРОНИЦАЕМОСТЬ</h3>
+<p>Здесь мы будем тестировать ajax запрос и работу подогружаемонго модуля.</p>
+</div>
+<script>
+    var module = new Vue ({
+        el: ".module",
+        data: {
+            a: 1,
+            b: 2
+        },
+        methods:{
+            test_func: function(){
+                console.log(this.a+this.b);
+            }
+        }
+    })
+</script>
