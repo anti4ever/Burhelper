@@ -28,22 +28,22 @@
             <h1>Расчеты в бурении</h1>
             <small>Мини утилиты на каждый день.</small>
             <br>                       
-            <button class="btn btn-primary btn-block">На главную страницу</button>
+            <button v-on:click="backonmain" v-show="seenmainbtn" class="btn btn-primary btn-block">На главную страницу</button>
         </div>
 
-        <div class="buttoncase well well-sm text-center">
-            <button v-on:click="gethtml(value.dir)" v-for="value in modulesinfo" :dir="value.dir" :title="value.description" class="btn btn-primary btn-block">{{value.name}}</button>
+        <div v-show="seenmodulesbtn" class="buttoncase well well-sm text-center">
+            <button v-on:click="getmodule(value.dir)" v-for="value in modulesinfo" :dir="value.dir" :title="value.description" class="btn btn-primary btn-block">{{value.name}}</button>
             
         </div>
-        <div class="gethtmlmodule"></div>
-            <!-- Тестовая кнопка для загрузки html с кодом модуля -->
+        <div v-show="seenmodulecase" class="modulecase well well-sm"></div>
+           
             
 
         <div class="well well-sm text-center">
             <p><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="color: red;"></span> Нашли ошибку: <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
             <p><span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span> Есть предложения по новым
                 <br>модулям: <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
-            <p><small>Cоздано с помощю <a href="http://getbootstrap.com">Bootstrap</a> , <a href="http://jquery.com/">jQuerty</a> и <a href="https://github.com/MikeMcl/big.js">Big.js.</a></small></p>
+            <p><small>Cоздано с помощью <a href="http://getbootstrap.com">Bootstrap</a> , <a href="http://jquery.com/">jQuerty</a> и <a href="https://github.com/MikeMcl/big.js">Big.js.</a></small></p>
         </div>
     </div>
     <!-- Создание приложения на Vue.js -->
@@ -67,26 +67,40 @@
             data: {
                 modulesinfo: Object,
                 dir: String,
-                moduletrigger:true
+                moduletrigger:true,
+                seenmainbtn: false,
+                seenmodulesbtn: true,
+                seenmodulecase:false
             },
             methods:{
-                gethtml: function (dir) {
+                getmodule: function (dir) {
                           if (this.moduletrigger == true) {
-                              $(".gethtmlmodule").load(dir);
-                               console.log(dir);//Это работает!
+                              $(".modulecase").load(dir);
+                               //console.log(dir);//Это работает!
                                this.moduletrigger=false;
+                               this.seenmodulesbtn=false;
+                               this.seenmainbtn=true;
+                               this.seenmodulecase=true;
                                console.log(this.moduletrigger);
                                console.log("ветка true");
                           }
                           else {
                             //module.$destroy();
-                            $(".gethtmlmodule").load(dir);
+                            $(".modulecase").load(dir);
+                            this.seenmodulesbtn=false;
+                            this.seenmainbtn=true;
+                            this.seenmodulecase=true;
                             console.log(dir);//Это работает!
                             console.log(this.moduletrigger);
                             console.log("ветка else");
                           }
                            
-                                    }
+                                    },
+                backonmain: function(){
+                    this.seenmodulesbtn=true;
+                    this.seenmainbtn=false;
+                    this.seenmodulecase=false;                   
+                }
                     },
              mounted: function() {
                $.getJSON("modules.json", function(data){ // Загрузка modules.json
