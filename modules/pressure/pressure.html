@@ -1,6 +1,48 @@
 <div class="module">
-<h3>ДАВЛЕНИЕ</h3>
-<p>Здесь мы будем тестировать ajax запрос и работу подогружаемонго модуля.</p>
+    <p align="center"><small>Конвертер единиц измерения давления</small></p>
+    <div>
+        <div class="input-group">
+            <input type="text" class="form-control pressure" placeholder="паскаль" aria-describedby="basic-addon2" id="input_pa" value="1">
+            <span class="input-group-addon" id="basic-addon2">Па</span>
+        </div>
+        <br>
+        <div class="input-group">
+            <input type="text" class="form-control pressure" placeholder="мегапаскаль" aria-describedby="basic-addon2" id="input_mpa" value="0.000001">
+            <span class="input-group-addon" id="basic-addon2">МПа</span>
+        </div>
+        <br>
+        <div class="input-group">
+            <input type="text" class="form-control pressure" placeholder="Бар" aria-describedby="basic-addon2" id="input_bar" value="0.00001">
+            <span class="input-group-addon" id="basic-addon2">Бар</span>
+        </div>
+        <br>
+        <div class="input-group">
+            <input type="text" class="form-control pressure" placeholder="ат | кгс/см2" aria-describedby="basic-addon2" id="input_at" value="0.00001019716212978">
+            <span class="input-group-addon" id="basic-addon2">ат | кгс/см<sup>2</sup></span>
+        </div>
+        <br>
+        <div class="input-group">
+            <input type="text" class="form-control pressure" placeholder="атм" aria-describedby="basic-addon2" id="input_atm" value="0.00000986923266716">
+            <span class="input-group-addon" id="basic-addon2">атм</span>
+        </div>
+        <br>
+        <div class="input-group">
+            <input type="text" class="form-control pressure" placeholder="метр.вод.ст" aria-describedby="basic-addon2" id="input_mvs" value="0.0001019744288922">
+            <span class="input-group-addon" id="basic-addon2">метр.вод.ст</span>
+        </div>
+        <br>
+        <div class="input-group">
+            <input type="text" class="form-control pressure" placeholder="psi" aria-describedby="basic-addon2" id="input_psi" value="0.00014503773773">
+            <span class="input-group-addon" id="basic-addon2">psi</span>
+        </div>
+        <br>
+        <div class="input-group">
+            <input type="text" class="form-control pressure" placeholder="ksi" aria-describedby="basic-addon2" id="input_ksi" value="0.00000014503773773">
+            <span class="input-group-addon" id="basic-addon2">ksi</span>
+        </div>
+        <br>
+        <div class="text-right"><a href="">Давление</a></div>
+    </div>
 </div>
 <script>
     var module = new Vue ({

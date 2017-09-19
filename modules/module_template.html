@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Расчеты в бурении</title>
+    <!-- Bootstrap CSS -->
+    <link href="http:/burhelper/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http:/burhelper/bootstrap/css/bootstrap-theme.css" rel="stylesheet">
+    <!-- My styles -->
+    <link href="http:/burhelper/style/style.css" rel="stylesheet">
+    <!-- jQuery JS -->
+    <script src="http:/burhelper/scripts/jquery-3.2.1.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="http:/burhelper/bootstrap/js/bootstrap.js"></script>
+    <!-- Работа с числами с плавающей точкой -->
+    <script src="http:/burhelper/scripts/big.min.js"></script>
+    <!-- Подключение Vue.js -->
+    <script src="http:/burhelper/scripts/vue.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!--Изменение максимальной ширины на 450px (стандартно 750px) через класс "container"-->
+        <div class="well well-sm text-center">
+            <b><a href="#">Burhelper.ru</a></b>
+            <h1>Расчеты в бурении</h1>
+            <small>Мини утилиты на каждый день.</small>
+            <br>
+        </div>
+
+        <!-- Метка для копирования в файл модуля для сборки -->
+        <div class="well well-sm">
+            <h3 align="center">Название модуля</h3>
+            <p align="center"><small>Описание модуля</small></p>
+            
+        <!-- Начало html модуля -->
+            
+            <div class="module">
+                Тут пишем размету модуля
+                <br>
+                 <div class="text-right"><a href="">Название ссылки</a></div> <!-- Ссылка на информационную страницу -->
+            </div>
+        </div>
+
+        <!-- Окончание html модуля -->
+
+        <div class="well well-sm text-center">
+            <p><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="color: red;"></span> Нашли ошибку:
+                <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
+            <p><span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span> Есть предложения по новым
+                <br>модулям: <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
+            <p><small>Cоздано с помощью <a href="http://getbootstrap.com">Bootstrap</a> , <a href="http://jquery.com/">jQuerty</a> и <a href="https://github.com/MikeMcl/big.js">Big.js.</a></small></p>
+        </div>
+    </div>
+
+    <!-- Скрипт модуля -->
+    <script>
+        var module = new Vue({
+            el: ".module",
+            data: {
+                a: 2,
+                b: 2
+            },
+            methods: {
+                test_func: function () {
+                    console.log(this.a + this.b);
+                }
+            }
+        })
+    </script>
+    <!-- Окончание метки для копирования в файл модуля для сборки -->

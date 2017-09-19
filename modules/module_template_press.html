@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Расчеты в бурении</title>
+    <!-- Bootstrap CSS -->
+    <link href="http:/burhelper/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http:/burhelper/bootstrap/css/bootstrap-theme.css" rel="stylesheet">
+    <!-- My styles -->
+    <link href="http:/burhelper/style/style.css" rel="stylesheet">
+    <!-- jQuery JS -->
+    <script src="http:/burhelper/scripts/jquery-3.2.1.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="http:/burhelper/bootstrap/js/bootstrap.js"></script>
+    <!-- Работа с числами с плавающей точкой -->
+    <script src="http:/burhelper/scripts/big.min.js"></script>
+    <!-- Подключение Vue.js -->
+    <script src="http:/burhelper/scripts/vue.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!--Изменение максимальной ширины на 450px (стандартно 750px) через класс "container"-->
+        <div class="well well-sm text-center">
+            <b><a href="#">Burhelper.ru</a></b>
+            <h1>Расчеты в бурении</h1>
+            <small>Мини утилиты на каждый день.</small>
+            <br>
+        </div>
+
+        <div class="well well-sm">
+            <h3 align="center">Давление</h3>
+            <p align="center"><small>Конвертер единиц измерения давления</small></p>
+            
+            <!-- Начало html модуля -->
+            
+            <div class="module">
+                <div class="input-group">
+                    <input type="text" class="form-control pressure" placeholder="паскаль" aria-describedby="basic-addon2" id="input_pa" value="1">
+                    <span class="input-group-addon" id="basic-addon2">Па</span>
+                </div>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control pressure" placeholder="мегапаскаль" aria-describedby="basic-addon2" id="input_mpa"
+                        value="0.000001">
+                    <span class="input-group-addon" id="basic-addon2">МПа</span>
+                </div>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control pressure" placeholder="Бар" aria-describedby="basic-addon2" id="input_bar" value="0.00001">
+                    <span class="input-group-addon" id="basic-addon2">Бар</span>
+                </div>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control pressure" placeholder="ат | кгс/см2" aria-describedby="basic-addon2" id="input_at"
+                        value="0.00001019716212978">
+                    <span class="input-group-addon" id="basic-addon2">ат | кгс/см<sup>2</sup></span>
+                </div>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control pressure" placeholder="атм" aria-describedby="basic-addon2" id="input_atm" value="0.00000986923266716">
+                    <span class="input-group-addon" id="basic-addon2">атм</span>
+                </div>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control pressure" placeholder="метр.вод.ст" aria-describedby="basic-addon2" id="input_mvs"
+                        value="0.0001019744288922">
+                    <span class="input-group-addon" id="basic-addon2">метр.вод.ст</span>
+                </div>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control pressure" placeholder="psi" aria-describedby="basic-addon2" id="input_psi" value="0.00014503773773">
+                    <span class="input-group-addon" id="basic-addon2">psi</span>
+                </div>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control pressure" placeholder="ksi" aria-describedby="basic-addon2" id="input_ksi" value="0.00000014503773773">
+                    <span class="input-group-addon" id="basic-addon2">ksi</span>
+                </div>
+                <br>
+                <div class="text-right"><a href="">Давление</a></div>
+            </div>
+        </div>
+
+        <!-- Окончание html модуля -->
+
+        <div class="well well-sm text-center">
+            <p><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="color: red;"></span> Нашли ошибку:
+                <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
+            <p><span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span> Есть предложения по новым
+                <br>модулям: <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
+            <p><small>Cоздано с помощью <a href="http://getbootstrap.com">Bootstrap</a> , <a href="http://jquery.com/">jQuerty</a> и <a href="https://github.com/MikeMcl/big.js">Big.js.</a></small></p>
+        </div>
+    </div>
+    <script>
+        var module = new Vue({
+            el: ".module",
+            data: {
+                a: 2,
+                b: 2
+            },
+            methods: {
+                test_func: function () {
+                    console.log(this.a + this.b);
+                }
+            }
+        })
+    </script>
