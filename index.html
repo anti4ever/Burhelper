@@ -48,19 +48,6 @@
     </div>
     <!-- Создание приложения на Vue.js -->
     <script>
-        //var module = true; // Переменная для проверки - создан уже экземпляр Vue c именем module
-        
-        // var modulesinfo; // Переменная для загрузки массива данных о модулях
-        //  $.getJSON("modules.json", function(data){ // Загрузка modules.json
-        //   modulesinfo = data;
-        // }); 
-
-        //Компонент шаблона кнопки для вызова модуля ПОКА НЕ ПРИГОДИЛСЯ
-        // Vue.component ("buttonmodule", { //Тэг шаблона
-        //     props: ['name','description','dir'],//Входные параметры
-        //     template: '<button class="btn btn-primary btn-block">{{name}}</button>' // Шаблон
-        // });
-
         // Создание основного экземпляра (главного приложения) Vue c именем "vm" с привязкой к id "maimapp"
         var vm = new Vue ({
             el: "#mainapp",
@@ -81,8 +68,8 @@
                                this.seenmodulesbtn=false;
                                this.seenmainbtn=true;
                                this.seenmodulecase=true;
-                               console.log(this.moduletrigger);
-                               console.log("ветка true");
+                               //console.log(this.moduletrigger);
+                               //console.log("ветка true");
                           }
                           else {
                             //module.$destroy();
@@ -90,9 +77,9 @@
                             this.seenmodulesbtn=false;
                             this.seenmainbtn=true;
                             this.seenmodulecase=true;
-                            console.log(dir);//Это работает!
-                            console.log(this.moduletrigger);
-                            console.log("ветка else");
+                            //console.log(dir);//Это работает!
+                            //console.log(this.moduletrigger);
+                            //console.log("ветка else");
                           }
                            
                                     },
