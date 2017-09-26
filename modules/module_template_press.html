@@ -44,39 +44,39 @@
                 </div>
                 <br>
                 <div class="input-group">
-                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="мегапаскаль" aria-describedby="basic-addon2" id="mpa" :value="mpa">
+                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="мегапаскаль" aria-describedby="basic-addon2" id="mpa" :value="obj.mpa">
                     <span class="input-group-addon" id="basic-addon2">МПа</span>
                 </div>
                 <br>
                 <div class="input-group">
-                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="Бар" aria-describedby="basic-addon2" id="bar" :value="bar">
+                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="Бар" aria-describedby="basic-addon2" id="bar" :value="obj.bar">
                     <span class="input-group-addon" id="basic-addon2">Бар</span>
                 </div>
                 <br>
                 <div class="input-group">
-                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="ат | кгс/см2" aria-describedby="basic-addon2" id="at"
+                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="ат | кгс/см2" aria-describedby="basic-addon2" id="obj.at"
                         :value="at">
                     <span class="input-group-addon" id="basic-addon2">ат | кгс/см<sup>2</sup></span>
                 </div>
                 <br>
                 <div class="input-group">
-                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="атм" aria-describedby="basic-addon2" id="atm" :value="atm">
+                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="атм" aria-describedby="basic-addon2" id="atm" :value="obj.atm">
                     <span class="input-group-addon" id="basic-addon2">атм</span>
                 </div>
                 <br>
                 <div class="input-group">
-                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="метр.вод.ст" aria-describedby="basic-addon2" id="mvs"
+                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="метр.вод.ст" aria-describedby="basic-addon2" id="obj.mvs"
                         :value="mvs">
                     <span class="input-group-addon" id="basic-addon2">метр.вод.ст</span>
                 </div>
                 <br>
                 <div class="input-group">
-                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="psi" aria-describedby="basic-addon2" id="psi" :value="psi">
+                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="psi" aria-describedby="basic-addon2" id="psi" :value="obj.psi">
                     <span class="input-group-addon" id="basic-addon2">psi</span>
                 </div>
                 <br>
                 <div class="input-group">
-                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="ksi" aria-describedby="basic-addon2" id="ksi" :value="ksi">
+                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="ksi" aria-describedby="basic-addon2" id="ksi" :value="obj.ksi">
                     <span class="input-group-addon" id="basic-addon2">ksi</span>
                 </div>
                 <br>
@@ -136,10 +136,10 @@
                         
                         for (i=0; i<count; i++)
                             {
-                             if (id != this.id[i]){
+                             if (id != this.obj[id]){
                              console.log(id+' not '+this.id[i]+'  i='+i);
-                             // = result[i];
-                             console.log(result[i]);
+                             this.obj[id] = result[i];
+                             console.log(this.obj[id]);
                              }
                             }
                         // this.pa = result[0];
