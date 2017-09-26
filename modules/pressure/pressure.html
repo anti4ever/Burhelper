@@ -1,53 +1,57 @@
-<div class="module">
-    <div class="input-group">
-        <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="паскаль"
-            aria-describedby="basic-addon2" id="pa" :value="obj.pa">
-        <span class="input-group-addon" id="basic-addon2">Па</span>
+<div>
+    <h3 align="center">Давление</h3>
+    <p align="center"><small>Конвертер единиц измерения давления</small></p>
+    <div class="module">
+        <div class="input-group">
+            <input v-on:input="convert($event.target.value,$event.target.id)" v-on:focus="selectAll" type="text" class="form-control pressure" placeholder="паскаль"
+                aria-describedby="basic-addon2" id="pa" :value="obj.pa">
+            <span class="input-group-addon" id="basic-addon2">Па</span>
+        </div>
+        <br>
+        <div class="input-group">
+            <input v-on:input="convert($event.target.value,$event.target.id)" v-on:focus="selectAll" type="text" class="form-control pressure" placeholder="мегапаскаль"
+                aria-describedby="basic-addon2" id="mpa" :value="obj.mpa">
+            <span class="input-group-addon" id="basic-addon2">МПа</span>
+        </div>
+        <br>
+        <div class="input-group">
+            <input v-on:input="convert($event.target.value,$event.target.id)" v-on:focus="selectAll" type="text" class="form-control pressure" placeholder="Бар"
+                aria-describedby="basic-addon2" id="bar" :value="obj.bar">
+            <span class="input-group-addon" id="basic-addon2">Бар</span>
+        </div>
+        <br>
+        <div class="input-group">
+            <input v-on:input="convert($event.target.value,$event.target.id)" v-on:focus="selectAll" type="text" class="form-control pressure" placeholder="ат | кгс/см2"
+                aria-describedby="basic-addon2" id="at" :value="obj.at">
+            <span class="input-group-addon" id="basic-addon2">ат | кгс/см<sup>2</sup></span>
+        </div>
+        <br>
+        <div class="input-group">
+            <input v-on:input="convert($event.target.value,$event.target.id)" v-on:focus="selectAll" type="text" class="form-control pressure" placeholder="атм"
+                aria-describedby="basic-addon2" id="atm" :value="obj.atm">
+            <span class="input-group-addon" id="basic-addon2">атм</span>
+        </div>
+        <br>
+        <div class="input-group">
+            <input v-on:input="convert($event.target.value,$event.target.id)" v-on:focus="selectAll" type="text" class="form-control pressure" placeholder="метр.вод.ст"
+                aria-describedby="basic-addon2" id="mvs" :value="obj.mvs">
+            <span class="input-group-addon" id="basic-addon2">метр.вод.ст</span>
+        </div>
+        <br>
+        <div class="input-group">
+            <input v-on:input="convert($event.target.value,$event.target.id)" v-on:focus="selectAll" type="text" class="form-control pressure" placeholder="psi"
+                aria-describedby="basic-addon2" id="psi" :value="obj.psi">
+            <span class="input-group-addon" id="basic-addon2">psi</span>
+        </div>
+        <br>
+        <div class="input-group">
+            <input v-on:input="convert($event.target.value,$event.target.id)" v-on:focus="selectAll" type="text" class="form-control pressure" placeholder="ksi"
+                aria-describedby="basic-addon2" id="ksi" :value="obj.ksi">
+            <span class="input-group-addon" id="basic-addon2">ksi</span>
+        </div>
+        <br>
+        <div class="text-right"><a href="">Давление</a></div>
     </div>
-    <br>
-    <div class="input-group">
-        <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="мегапаскаль"
-            aria-describedby="basic-addon2" id="mpa" :value="obj.mpa">
-        <span class="input-group-addon" id="basic-addon2">МПа</span>
-    </div>
-    <br>
-    <div class="input-group">
-        <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="Бар"
-            aria-describedby="basic-addon2" id="bar" :value="obj.bar">
-        <span class="input-group-addon" id="basic-addon2">Бар</span>
-    </div>
-    <br>
-    <div class="input-group">
-        <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="ат | кгс/см2"
-            aria-describedby="basic-addon2" id="at" :value="obj.at">
-        <span class="input-group-addon" id="basic-addon2">ат | кгс/см<sup>2</sup></span>
-    </div>
-    <br>
-    <div class="input-group">
-        <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="атм"
-            aria-describedby="basic-addon2" id="atm" :value="obj.atm">
-        <span class="input-group-addon" id="basic-addon2">атм</span>
-    </div>
-    <br>
-    <div class="input-group">
-        <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="метр.вод.ст"
-            aria-describedby="basic-addon2" id="mvs" :value="obj.mvs">
-        <span class="input-group-addon" id="basic-addon2">метр.вод.ст</span>
-    </div>
-    <br>
-    <div class="input-group">
-        <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="psi"
-            aria-describedby="basic-addon2" id="psi" :value="obj.psi">
-        <span class="input-group-addon" id="basic-addon2">psi</span>
-    </div>
-    <br>
-    <div class="input-group">
-        <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="ksi"
-            aria-describedby="basic-addon2" id="ksi" :value="obj.ksi">
-        <span class="input-group-addon" id="basic-addon2">ksi</span>
-    </div>
-    <br>
-    <div class="text-right"><a href="">Давление</a></div>
 </div>
 
 <!-- Окончание html модуля -->
@@ -100,6 +104,11 @@
                     //console.log(this.obj[this.id[i]]);
                     // }
                 }
+            },
+            selectAll: function(event){
+                setTimeout(function () {
+      	            event.target.select()
+                                        }, 0);
             }
         }
     })

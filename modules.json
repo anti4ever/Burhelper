@@ -3,11 +3,17 @@
         "name": "Давление",
         "description": "Конвертер единиц измерения давления",
         "dir": "modules/pressure/pressure.html"
-                },
+    },
 
     "permeability": {
         "name": "Проницаемость",
         "description": "Конвертер единиц измерения проницаемости горных пород",
         "dir": "modules/permeability/permeability.html"
-                    }               
+    },
+
+    "mass": {
+        "name": "Вес, масса",
+        "description": "Конвертер единиц измерения массы и веса",
+        "dir": "modules/mass/mass.html"
+    }
 }
