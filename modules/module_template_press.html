@@ -34,67 +34,66 @@
         <div class="well well-sm">
             <h3 align="center">Давление</h3>
             <p align="center"><small>Конвертер единиц измерения давления</small></p>
-            
+
             <!-- Начало html модуля -->
-            
+
             <div class="module">
                 <div class="input-group">
-                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="паскаль" aria-describedby="basic-addon2" id="pa" :value="obj.pa">
+                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="паскаль"
+                        aria-describedby="basic-addon2" id="pa" :value="obj.pa">
                     <span class="input-group-addon" id="basic-addon2">Па</span>
                 </div>
                 <br>
                 <div class="input-group">
-                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="мегапаскаль" aria-describedby="basic-addon2" id="mpa" :value="obj.mpa">
+                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="мегапаскаль"
+                        aria-describedby="basic-addon2" id="mpa" :value="obj.mpa">
                     <span class="input-group-addon" id="basic-addon2">МПа</span>
                 </div>
                 <br>
                 <div class="input-group">
-                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="Бар" aria-describedby="basic-addon2" id="bar" :value="obj.bar">
+                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="Бар"
+                        aria-describedby="basic-addon2" id="bar" :value="obj.bar">
                     <span class="input-group-addon" id="basic-addon2">Бар</span>
                 </div>
                 <br>
                 <div class="input-group">
-                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="ат | кгс/см2" aria-describedby="basic-addon2" id="obj.at"
-                        :value="at">
+                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="ат | кгс/см2"
+                        aria-describedby="basic-addon2" id="at" :value="obj.at">
                     <span class="input-group-addon" id="basic-addon2">ат | кгс/см<sup>2</sup></span>
                 </div>
                 <br>
                 <div class="input-group">
-                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="атм" aria-describedby="basic-addon2" id="atm" :value="obj.atm">
+                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="атм"
+                        aria-describedby="basic-addon2" id="atm" :value="obj.atm">
                     <span class="input-group-addon" id="basic-addon2">атм</span>
                 </div>
                 <br>
                 <div class="input-group">
-                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="метр.вод.ст" aria-describedby="basic-addon2" id="obj.mvs"
-                        :value="mvs">
+                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="метр.вод.ст"
+                        aria-describedby="basic-addon2" id="mvs" :value="obj.mvs">
                     <span class="input-group-addon" id="basic-addon2">метр.вод.ст</span>
                 </div>
                 <br>
                 <div class="input-group">
-                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="psi" aria-describedby="basic-addon2" id="psi" :value="obj.psi">
+                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="psi"
+                        aria-describedby="basic-addon2" id="psi" :value="obj.psi">
                     <span class="input-group-addon" id="basic-addon2">psi</span>
                 </div>
                 <br>
                 <div class="input-group">
-                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="ksi" aria-describedby="basic-addon2" id="ksi" :value="obj.ksi">
+                    <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="ksi"
+                        aria-describedby="basic-addon2" id="ksi" :value="obj.ksi">
                     <span class="input-group-addon" id="basic-addon2">ksi</span>
                 </div>
                 <br>
                 <div class="text-right"><a href="">Давление</a></div>
             </div>
         </div>
-
-        <!-- Окончание html модуля -->
-
-        <div class="well well-sm text-center">
-            <p><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="color: red;"></span> Нашли ошибку:
-                <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
-            <p><span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span> Есть предложения по новым
-                <br>модулям: <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
-            <p><small>Cоздано с помощью <a href="http://getbootstrap.com">Bootstrap</a> , <a href="http://jquery.com/">jQuerty</a> и <a href="https://github.com/MikeMcl/big.js">Big.js.</a></small></p>
-        </div>
     </div>
-    <script>
+</body>
+<!-- Окончание html модуля -->
+
+<script>
     // Давление (pressure)
     /*
     Паскаль / 1 / input_pa
@@ -106,55 +105,44 @@
     Фунт на квадратный дюйм 'psi'/ 0.00014503773773 / input_psi
     1000 фунтов на квадратный дюйм 'ksi' / 0.00000014503773773 / input_ksi
     */
-        var module = new Vue({
-            el: ".module",
-            data: {
-               obj: { pa: 1,
+    var module = new Vue({
+        el: ".module",
+        data: {
+            obj: {
+                pa: 1,
                 mpa: 0.000001,
                 bar: 0.00001,
                 at: 0.00001019716212978,
                 atm: 0.00000986923266716,
                 mvs: 0.0001019744288922,
                 psi: 0.00014503773773,
-                ksi: 0.00000014503773773},
-                id: ["pa","mpa","bar","at","atm","mvs","psi","ksi"],
-                const: [1,0.000001,0.00001,0.00001019716212978,0.00000986923266716,0.0001019744288922,0.00014503773773,0.00000014503773773],
-                //val: Number, id: String
+                ksi: 0.00000014503773773
             },
-            methods: {
-                convert: function (val, id) {
-                    count = this.id.length;
-                    id_of = this.id.indexOf(id);
-                    c = Big(this.const[id_of]);
-                    val=Big(val);
-                    result = [];
-                    for (i=0; i<count; i++)
-                        {
-                        const_for = Big(this.const[i]);
-                        result[i] = val.div(c).times(const_for);
-                        }
-                        
-                        for (i=0; i<count; i++)
-                            {
-                             if (id != this.obj[id]){
-                             console.log(id+' not '+this.id[i]+'  i='+i);
-                             this.obj[id] = result[i];
-                             console.log(this.obj[id]);
-                             }
-                            }
-                        // this.pa = result[0];
-                        // this.mpa = result[1];
-                        // this.bar = result[2];
-                        // this.at = result[3];
-                        // this.atm = result[4];
-                        // this.mvs = result[5];
-                        // this.psi = result[6];
-                        // this.ksi = result[7];
+            id: ["pa", "mpa", "bar", "at", "atm", "mvs", "psi", "ksi"],
+            const: [1, 0.000001, 0.00001, 0.00001019716212978, 0.00000986923266716, 0.0001019744288922,
+                0.00014503773773, 0.00000014503773773
+            ],
+        },
+        methods: {
+            convert: function (val, id) {
+                count = this.id.length;
+                id_of = this.id.indexOf(id);
+                c = Big(this.const[id_of]);
+                val = Big(val);
+                result = [];
+                for (i = 0; i < count; i++) {
+                    const_for = Big(this.const[i]);
+                    result[i] = Number(val.div(c).times(const_for));
+                }
 
-                    //console.log(id_of);
-                    //console.log(count);
-                    //console.log(val, id);
+                for (i = 0; i < count; i++) {
+                    //if (id != this.id[i]){
+                    //console.log(id+' not '+this.id[i]+'  i='+i);
+                    this.obj[this.id[i]] = result[i];
+                    //console.log(this.obj[this.id[i]]);
+                    // }
                 }
             }
-        })
-    </script>
+        }
+    })
+</script>

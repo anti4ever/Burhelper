@@ -1,59 +1,105 @@
 <div class="module">
-    <p align="center"><small>Конвертер единиц измерения давления</small></p>
-    <div>
-        <div class="input-group">
-            <input type="text" class="form-control pressure" placeholder="паскаль" aria-describedby="basic-addon2" id="input_pa" value="1">
-            <span class="input-group-addon" id="basic-addon2">Па</span>
-        </div>
-        <br>
-        <div class="input-group">
-            <input type="text" class="form-control pressure" placeholder="мегапаскаль" aria-describedby="basic-addon2" id="input_mpa" value="0.000001">
-            <span class="input-group-addon" id="basic-addon2">МПа</span>
-        </div>
-        <br>
-        <div class="input-group">
-            <input type="text" class="form-control pressure" placeholder="Бар" aria-describedby="basic-addon2" id="input_bar" value="0.00001">
-            <span class="input-group-addon" id="basic-addon2">Бар</span>
-        </div>
-        <br>
-        <div class="input-group">
-            <input type="text" class="form-control pressure" placeholder="ат | кгс/см2" aria-describedby="basic-addon2" id="input_at" value="0.00001019716212978">
-            <span class="input-group-addon" id="basic-addon2">ат | кгс/см<sup>2</sup></span>
-        </div>
-        <br>
-        <div class="input-group">
-            <input type="text" class="form-control pressure" placeholder="атм" aria-describedby="basic-addon2" id="input_atm" value="0.00000986923266716">
-            <span class="input-group-addon" id="basic-addon2">атм</span>
-        </div>
-        <br>
-        <div class="input-group">
-            <input type="text" class="form-control pressure" placeholder="метр.вод.ст" aria-describedby="basic-addon2" id="input_mvs" value="0.0001019744288922">
-            <span class="input-group-addon" id="basic-addon2">метр.вод.ст</span>
-        </div>
-        <br>
-        <div class="input-group">
-            <input type="text" class="form-control pressure" placeholder="psi" aria-describedby="basic-addon2" id="input_psi" value="0.00014503773773">
-            <span class="input-group-addon" id="basic-addon2">psi</span>
-        </div>
-        <br>
-        <div class="input-group">
-            <input type="text" class="form-control pressure" placeholder="ksi" aria-describedby="basic-addon2" id="input_ksi" value="0.00000014503773773">
-            <span class="input-group-addon" id="basic-addon2">ksi</span>
-        </div>
-        <br>
-        <div class="text-right"><a href="">Давление</a></div>
+    <div class="input-group">
+        <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="паскаль"
+            aria-describedby="basic-addon2" id="pa" :value="obj.pa">
+        <span class="input-group-addon" id="basic-addon2">Па</span>
     </div>
+    <br>
+    <div class="input-group">
+        <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="мегапаскаль"
+            aria-describedby="basic-addon2" id="mpa" :value="obj.mpa">
+        <span class="input-group-addon" id="basic-addon2">МПа</span>
+    </div>
+    <br>
+    <div class="input-group">
+        <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="Бар"
+            aria-describedby="basic-addon2" id="bar" :value="obj.bar">
+        <span class="input-group-addon" id="basic-addon2">Бар</span>
+    </div>
+    <br>
+    <div class="input-group">
+        <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="ат | кгс/см2"
+            aria-describedby="basic-addon2" id="at" :value="obj.at">
+        <span class="input-group-addon" id="basic-addon2">ат | кгс/см<sup>2</sup></span>
+    </div>
+    <br>
+    <div class="input-group">
+        <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="атм"
+            aria-describedby="basic-addon2" id="atm" :value="obj.atm">
+        <span class="input-group-addon" id="basic-addon2">атм</span>
+    </div>
+    <br>
+    <div class="input-group">
+        <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="метр.вод.ст"
+            aria-describedby="basic-addon2" id="mvs" :value="obj.mvs">
+        <span class="input-group-addon" id="basic-addon2">метр.вод.ст</span>
+    </div>
+    <br>
+    <div class="input-group">
+        <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="psi"
+            aria-describedby="basic-addon2" id="psi" :value="obj.psi">
+        <span class="input-group-addon" id="basic-addon2">psi</span>
+    </div>
+    <br>
+    <div class="input-group">
+        <input v-on:input="convert($event.target.value,$event.target.id)" type="text" class="form-control pressure" placeholder="ksi"
+            aria-describedby="basic-addon2" id="ksi" :value="obj.ksi">
+        <span class="input-group-addon" id="basic-addon2">ksi</span>
+    </div>
+    <br>
+    <div class="text-right"><a href="">Давление</a></div>
 </div>
+
+<!-- Окончание html модуля -->
 <script>
-    var module = new Vue ({
+    // Давление (pressure)
+    /*
+    Паскаль / 1 / input_pa
+    Мегапаскаль /0.000001 /input_mpa
+    Бар / 0.00001 / input_bar
+    Тех.атмосфера 'ат', 'кгс/см2'/ 0.00001019716212978 / input_at
+    Атмосфера 'атм' / 0.00000986923266716 / input_atm
+    Метров водного столба 'метр.вод.ст' (1000 кг/м2) / 0.0001019744288922 / input_mvs
+    Фунт на квадратный дюйм 'psi'/ 0.00014503773773 / input_psi
+    1000 фунтов на квадратный дюйм 'ksi' / 0.00000014503773773 / input_ksi
+    */
+    var module = new Vue({
         el: ".module",
         data: {
-            a: 2,
-            b: 2
+            obj: {
+                pa: 1,
+                mpa: 0.000001,
+                bar: 0.00001,
+                at: 0.00001019716212978,
+                atm: 0.00000986923266716,
+                mvs: 0.0001019744288922,
+                psi: 0.00014503773773,
+                ksi: 0.00000014503773773
+            },
+            id: ["pa", "mpa", "bar", "at", "atm", "mvs", "psi", "ksi"],
+            const: [1, 0.000001, 0.00001, 0.00001019716212978, 0.00000986923266716, 0.0001019744288922,
+                0.00014503773773, 0.00000014503773773
+            ],
         },
-        methods:{
-            test_func: function(){
-                console.log(this.a+this.b);
+        methods: {
+            convert: function (val, id) {
+                count = this.id.length;
+                id_of = this.id.indexOf(id);
+                c = Big(this.const[id_of]);
+                val = Big(val);
+                result = [];
+                for (i = 0; i < count; i++) {
+                    const_for = Big(this.const[i]);
+                    result[i] = Number(val.div(c).times(const_for));
+                }
+
+                for (i = 0; i < count; i++) {
+                    //if (id != this.id[i]){
+                    //console.log(id+' not '+this.id[i]+'  i='+i);
+                    this.obj[this.id[i]] = result[i];
+                    //console.log(this.obj[this.id[i]]);
+                    // }
+                }
             }
         }
     })
