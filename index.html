@@ -11,6 +11,8 @@
     <link href="bootstrap/css/bootstrap-theme.css" rel="stylesheet">
     <!-- My styles -->
     <link href="style/style.css" rel="stylesheet">
+    <!-- Подключение Animate.css -->
+    <link href="style/animate.css" rel="stylesheet">
     <!-- jQuery JS -->
     <script src="scripts/jquery-3.2.1.js"></script>
     <!-- Bootstrap JS -->
@@ -19,6 +21,7 @@
     <script src="scripts/big.min.js"></script>
     <!-- Подключение Vue.js -->
     <script src="scripts/vue.js"></script>
+    <!-- Подключение иконки -->
     <link rel="shortcut icon" href="favicon.png" type="image/png">
 </head>
 
@@ -38,8 +41,14 @@
             <button v-on:click="getmodule(value.dir)" v-for="value in modulesinfo" :dir="value.dir" :title="value.description" class="btn btn-primary btn-block">{{value.name}}</button>
 
         </div>
-        <div v-show="seenmodulecase" class="modulecase well well-sm"></div>
 
+        <transition
+        name="fade"
+        enter-active-class="animated flipInX"
+        >
+                <div v-show="seenmodulecase" class="modulecase well well-sm"></div>
+        </transition>  
+        
 
 
         <div class="well well-sm text-center">
