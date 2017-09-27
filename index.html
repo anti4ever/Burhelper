@@ -34,17 +34,25 @@
             <h1>Расчеты в бурении</h1>
             <small>Мини утилиты на каждый день.</small>
             <br>
-            <button v-on:click="backonmain" v-show="seenmainbtn" class="btn btn-primary btn-block">На главную страницу</button>
         </div>
+        <div class="well well-sm" v-show="seenmainbtn">
+           <button v-on:click="backonmain" class="btn btn-primary btn-block">На главную страницу</button>
+        </div>
+        
 
+        <transition
+        name="fade"
+        enter-active-class="animated fadeIn"
+        >
         <div v-show="seenmodulesbtn" class="buttoncase well well-sm text-center">
             <button v-on:click="getmodule(value.dir)" v-for="value in modulesinfo" :dir="value.dir" :title="value.description" class="btn btn-primary btn-block">{{value.name}}</button>
 
         </div>
+        </transition>
 
         <transition
         name="fade"
-        enter-active-class="animated flipInX"
+        enter-active-class="animated fadeIn"
         >
                 <div v-show="seenmodulecase" class="modulecase well well-sm"></div>
         </transition>  
