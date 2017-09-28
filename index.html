@@ -35,37 +35,34 @@
             <small>Мини утилиты на каждый день.</small>
             <br>
         </div>
-        <div class="well well-sm" v-show="seenmainbtn">
-           <button v-on:click="backonmain" class="btn btn-primary btn-block">На главную страницу</button>
-        </div>
-        
 
-        <transition
-        name="fade"
-        enter-active-class="animated fadeIn"
-        >
-        <div v-show="seenmodulesbtn" class="buttoncase well well-sm text-center">
-            <button v-on:click="getmodule(value.dir)" v-for="value in modulesinfo" :dir="value.dir" :title="value.description" class="btn btn-primary btn-block">{{value.name}}</button>
-
-        </div>
+        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+            <div class="well well-sm" v-show="seenmainbtn">
+                <button v-on:click="backonmain" class="btn btn-primary btn-block">На главную страницу</button>
+            </div>
         </transition>
 
-        <transition
-        name="fade"
-        enter-active-class="animated fadeIn"
-        >
-                <div v-show="seenmodulecase" class="modulecase well well-sm"></div>
-        </transition>  
-        
+        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+            <div v-show="seenmodulesbtn" class="buttoncase well well-sm text-center">
+                <button v-on:click="getmodule(value.dir)" v-for="value in modulesinfo" :dir="value.dir" :title="value.description" class="btn btn-primary btn-block">{{value.name}}</button>
+
+            </div>
+        </transition>
+
+        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+            <div v-show="seenmodulecase" class="modulecase well well-sm"></div>
+        </transition>
 
 
-        <div class="well well-sm text-center">
-            <p><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="color: red;"></span> Нашли ошибку:
-                <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
-            <p><span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span> Есть предложения по новым
-                <br>модулям: <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
-            <p><small>Cоздано с помощью <a href="http://getbootstrap.com">Bootstrap</a> , <a href="http://jquery.com/">jQuerty</a> и <a href="https://github.com/MikeMcl/big.js">Big.js.</a></small></p>
-        </div>
+        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+            <div v-show="seenfooter" class="well well-sm text-center">
+                <p><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="color: red;"></span> Нашли ошибку:
+                    <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
+                <p><span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span> Есть предложения по новым
+                    <br>модулям: <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
+                <p><small>Cоздано с помощью <a href="http://getbootstrap.com">Bootstrap</a> , <a href="http://jquery.com/">jQuerty</a> и <a href="https://github.com/MikeMcl/big.js">Big.js.</a></small></p>
+            </div>
+        </transition>
     </div>
     <!-- Создание приложения на Vue.js -->
     <script>
@@ -78,35 +75,33 @@
                 moduletrigger: true,
                 seenmainbtn: false,
                 seenmodulesbtn: true,
-                seenmodulecase: false
+                seenmodulecase: false,
+                seenfooter: true
             },
             methods: {
                 getmodule: function (dir) {
                     if (this.moduletrigger == true) {
                         $(".modulecase").load(dir);
-                        //console.log(dir);//Это работает!
                         this.moduletrigger = false;
-                        this.seenmodulesbtn = false;
-                        this.seenmainbtn = true;
-                        this.seenmodulecase = true;
-                        //console.log(this.moduletrigger);
-                        //console.log("ветка true");
+                        this.animateloadmodule();
                     } else {
-                        //module.$destroy();
                         $(".modulecase").load(dir);
-                        this.seenmodulesbtn = false;
-                        this.seenmainbtn = true;
-                        this.seenmodulecase = true;
-                        //console.log(dir);//Это работает!
-                        //console.log(this.moduletrigger);
-                        //console.log("ветка else");
+                        this.animateloadmodule();
                     }
 
                 },
                 backonmain: function () {
-                    this.seenmodulesbtn = true;
-                    this.seenmainbtn = false;
+                    this.seenfooter = false;
                     this.seenmodulecase = false;
+                    this.seenmainbtn = false;
+                    this.seenmodulesbtn = true;
+                    this.seenfooter = true;
+                    
+                },
+                animateloadmodule: function () {
+                    this.seenmodulesbtn = false;
+                    this.seenmainbtn = true;
+                    this.seenmodulecase = true;
                 }
             },
             mounted: function () {
