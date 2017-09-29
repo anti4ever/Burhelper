@@ -29,6 +29,7 @@
     <br>
     <div class="container" id="mainapp">
         <!--Изменение максимальной ширины на 450px (стандартно 750px) через класс "container"-->
+       <!-- Заголовок -->
         <div class="well well-sm text-center">
             <img src="favicon.png" class="mainimg"><b><a href="#">Burhelper.ru</a></b>
             <h1>Расчеты в бурении</h1>
@@ -36,25 +37,34 @@
             <br>
         </div>
 
-        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+        <!-- Кнопка На главную страницу -->
+        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut"
+        v-on:after-enter="seenmodulecase = !seenmodulecase"
+        v-on:after-leave="seenmodulesbtn=!seenmodulesbtn">
             <div class="well well-sm" v-show="seenmainbtn">
-                <button v-on:click="backonmain" class="btn btn-primary btn-block">На главную страницу</button>
+                <button v-on:click="seenfooter=!seenfooter" class="btn btn-primary btn-block">На главную страницу</button>
             </div>
         </transition>
 
-        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
-            <div v-show="seenmodulesbtn" class="buttoncase well well-sm text-center">
+        <!-- Кнопки модулей -->
+        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut"
+        v-on:after-leave="seenmainbtn=!seenmainbtn"
+        v-on:after-enter="seenfooter=!seenfooter">
+                    <div v-show="seenmodulesbtn" class="buttoncase well well-sm text-center">
                 <button v-on:click="getmodule(value.dir)" v-for="value in modulesinfo" :dir="value.dir" :title="value.description" class="btn btn-primary btn-block">{{value.name}}</button>
-
             </div>
         </transition>
 
-        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+        <!-- Кейс модуля -->
+        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut"
+        v-on:after-leave="seenmainbtn = !seenmainbtn"
+        v-on:after-enter="seenfooter = !seenfooter">
             <div v-show="seenmodulecase" class="modulecase well well-sm"></div>
         </transition>
 
-
-        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+        <!-- Подвал -->
+        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut"
+        v-on:after-leave="backonmain">
             <div v-show="seenfooter" class="well well-sm text-center">
                 <p><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="color: red;"></span> Нашли ошибку:
                     <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
@@ -91,17 +101,29 @@
 
                 },
                 backonmain: function () {
-                    this.seenfooter = false;
-                    this.seenmodulecase = false;
-                    this.seenmainbtn = false;
-                    this.seenmodulesbtn = true;
-                    this.seenfooter = true;
+                   if (this.seenmodulesbtn == true) {
+                       this.seenmodulesbtn = false;
+                   }
+                   if (this.seenmodulecase == true) {
+                       this.seenmodulecase = false;
+                   }
+                   // this.seenfooter = false; //1
+                    // this.seenmodulecase = false; //2
+                    // this.seenmainbtn = false; //3
+                    // this.seenmodulesbtn = true; //4
+                    // this.seenfooter = true; //5
                     
                 },
                 animateloadmodule: function () {
-                    this.seenmodulesbtn = false;
-                    this.seenmainbtn = true;
-                    this.seenmodulecase = true;
+                this.seenfooter = !this.seenfooter;
+                //    if (this.seenmodulecase == false) {
+                //        this.seenmodulecase = !this.seenmodulecase
+                //    }
+                //    else {this.seenmodulesbtn = !this.seenmodulesbtn};
+                    
+                   // this.seenmodulesbtn = false;
+                    //this.seenmainbtn = true;
+                    //this.seenmodulecase = true;
                 }
             },
             mounted: function () {
