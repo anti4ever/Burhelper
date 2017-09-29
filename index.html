@@ -97,7 +97,7 @@
                     } else {
                         $(".modulecase").load(dir);
                         this.animateloadmodule();
-                    }
+                    };
 
                 },
                 backonmain: function () {
@@ -106,24 +106,11 @@
                    }
                    if (this.seenmodulecase == true) {
                        this.seenmodulecase = false;
-                   }
-                   // this.seenfooter = false; //1
-                    // this.seenmodulecase = false; //2
-                    // this.seenmainbtn = false; //3
-                    // this.seenmodulesbtn = true; //4
-                    // this.seenfooter = true; //5
-                    
+                   };
+                                       
                 },
                 animateloadmodule: function () {
-                this.seenfooter = !this.seenfooter;
-                //    if (this.seenmodulecase == false) {
-                //        this.seenmodulecase = !this.seenmodulecase
-                //    }
-                //    else {this.seenmodulesbtn = !this.seenmodulesbtn};
-                    
-                   // this.seenmodulesbtn = false;
-                    //this.seenmainbtn = true;
-                    //this.seenmodulecase = true;
+                this.seenfooter = !this.seenfooter;                
                 }
             },
             mounted: function () {
