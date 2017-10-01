@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Расчеты в бурении</title>
+    <!-- Bootstrap CSS -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap-theme.css" rel="stylesheet">
+    <!-- My styles -->
+    <link href="../style/style.css" rel="stylesheet">
+    <!-- jQuery JS -->
+    <script src="../scripts/jquery-3.2.1.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="../bootstrap/js/bootstrap.js"></script>
+    <!-- Работа с числами с плавающей точкой -->
+    <script src="../scripts/big.min.js"></script>
+    <!-- Подключение Vue.js -->
+    <script src="../scripts/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.7.4/showdown.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!--Изменение максимальной ширины на 450px (стандартно 750px) через класс "container"-->
+        <div class="well well-sm text-center">
+            <b><a href="#">Burhelper.ru</a></b>
+            <h1>Расчеты в бурении</h1>
+            <small>Мини утилиты на каждый день.</small>
+            <br>
+        </div>
+
+        <!-- Метка для копирования в файл модуля для сборки -->
+        <div class="well well-sm">
+            <h3 align="center">Название модуля</h3>
+            <p align="center"><small>Описание модуля</small></p>
+            
+        <!-- Начало html модуля -->
+            
+            <div class="module">
+                Текст в формате Markdown:
+                <textarea v-on:input='convert($event.target.value)' class="form-control" rows="7" style="resize=none"></textarea>
+                <br>
+                HTML представление:
+                <textarea class="form-control" rows="7" style="resize=none">{{html}}</textarea>
+                <br>
+                Так это выглядит на странице:
+                <div class="markdown" v-html="html"></div>
+                
+                 <div class="text-right"><a href="">Название ссылки</a></div> <!-- Ссылка на информационную страницу -->
+            </div>
+        </div>
+
+        <!-- Окончание html модуля -->
+
+        <div class="well well-sm text-center">
+            <p><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="color: red;"></span> Нашли ошибку:
+                <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
+            <p><span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span> Есть предложения по новым
+                <br>модулям: <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
+            <p><small>Cоздано с помощью <a href="http://getbootstrap.com">Bootstrap</a> , <a href="http://jquery.com/">jQuerty</a> и <a href="https://github.com/MikeMcl/big.js">Big.js.</a></small></p>
+        </div>
+    </div>
+
+    <!-- Скрипт модуля -->
+    <script>
+        var module = new Vue({
+            el: ".module",
+            data: {
+                text: String,
+                html: ""
+            },
+            methods: {
+                convert: function (text_input) {
+                    var converter = new showdown.Converter();
+                    this.text = text_input;
+                    this.html = converter.makeHtml(this.text);
+                   // console.log(this.text);
+                }
+            }
+        })
+    </script>
+    <!-- Окончание метки для копирования в файл модуля для сборки -->
