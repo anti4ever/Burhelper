@@ -41,7 +41,7 @@
         <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut"
         v-on:after-enter="seenmodulecase = !seenmodulecase"
         v-on:after-leave="seenmodulesbtn=!seenmodulesbtn">
-            <div class="well well-sm" v-show="seenmainbtn">
+            <div class="well well-sm" v-show="seenmainbtn" style="animation-duration: 350ms">
                 <button v-on:click="seenfooter=!seenfooter" class="btn btn-primary btn-block">На главную страницу</button>
             </div>
         </transition>
@@ -50,22 +50,22 @@
         <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut"
         v-on:after-leave="seenmainbtn=!seenmainbtn"
         v-on:after-enter="seenfooter=!seenfooter">
-                    <div v-show="seenmodulesbtn" class="buttoncase well well-sm text-center">
+                    <div v-show="seenmodulesbtn" class="buttoncase well well-sm text-center" style="animation-duration: 350ms">
                 <button v-on:click="getmodule(value.dir)" v-for="value in modulesinfo" :dir="value.dir" :title="value.description" class="btn btn-primary btn-block">{{value.name}}</button>
             </div>
         </transition>
 
         <!-- Кейс модуля -->
-        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut"
+        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut" 
         v-on:after-leave="seenmainbtn = !seenmainbtn"
         v-on:after-enter="seenfooter = !seenfooter">
-            <div v-show="seenmodulecase" class="modulecase well well-sm"></div>
+            <div v-show="seenmodulecase" class="modulecase well well-sm" style="animation-duration: 350ms"></div>
         </transition>
 
         <!-- Подвал -->
         <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut"
         v-on:after-leave="backonmain">
-            <div v-show="seenfooter" class="well well-sm text-center">
+            <div v-show="seenfooter" class="well well-sm text-center" style="animation-duration: 350ms">
                 <p><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="color: red;"></span> Нашли ошибку:
                     <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
                 <p><span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span> Есть предложения по новым
