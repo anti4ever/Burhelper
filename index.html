@@ -7,20 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Расчеты в бурении</title>
     <!-- Bootstrap CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="bootstrap/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
     <!-- My styles -->
-    <link href="style/style.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
     <!-- Подключение Animate.css -->
-    <link href="style/animate.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet">
     <!-- jQuery JS -->
-    <script src="scripts/jquery-3.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <!-- Bootstrap JS -->
-    <script src="bootstrap/js/bootstrap.js"></script>
-    <!-- Работа с числами с плавающей точкой -->
-    <script src="scripts/big.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <!-- Работа с числами с плавающей точкой Big.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/big.js/4.0.2/big.min.js"></script>
     <!-- Подключение Vue.js -->
-    <script src="scripts/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js"></script>
     <!-- Подключение иконки -->
     <link rel="shortcut icon" href="favicon.png" type="image/png">
 </head>
@@ -31,8 +31,8 @@
         <!--Изменение максимальной ширины на 450px (стандартно 750px) через класс "container"-->
        <!-- Заголовок -->
         <div class="well well-sm text-center">
-            <img src="favicon.png" class="mainimg"><b><a href="#">Burhelper.ru</a></b>
-            <h1>Расчеты в бурении</h1>
+            <img src="favicon.png" class="mainimg"><b><br><a href="#">Burhelper.ru</a></b>
+            <h2>Расчеты в бурении</h2>
             <small>Мини утилиты на каждый день.</small>
             <br>
         </div>
@@ -51,7 +51,7 @@
         v-on:after-leave="seenmainbtn=!seenmainbtn"
         v-on:after-enter="seenfooter=!seenfooter">
                     <div v-show="seenmodulesbtn" class="buttoncase well well-sm text-center" style="animation-duration: 350ms">
-                <button v-on:click="getmodule(value.dir)" v-for="value in modulesinfo" :dir="value.dir" :title="value.description" class="btn btn-primary btn-block">{{value.name}}</button>
+                <button v-on:click="getmodule(value.dir)" v-for="value in modulesinfo" :dir="value.dir" :title="value.description" class="btn btn-primary btn-block" style="white-space: normal">{{value.name}}</button>
             </div>
         </transition>
 

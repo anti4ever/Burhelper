@@ -1,0 +1,84 @@
+<div>
+    <h3 align="center">Диаметр скважины / коэффициент кавернозности</h3>
+    <p align="center"><small>Пересчет: диаметр скважины / коэффициент кавернозности</small></p>
+    <div class="module">
+        Диаметр долота:
+        <div class="input-group">            
+            <input v-on:focus="selectAll" value="215.9" list="diameter_list" type="text" id="diameter_bit" class="form-control">
+            <span class="input-group-addon" id="basic-addon2">мм</span>
+            <datalist id="diameter_list">
+                <option v-for="item in diameter_bit" :value="item"></option>                
+            </datalist>
+        </div>
+        <br>
+        Коэффициент кавернозности:
+        <div class="input-group">            
+            <input v-on:focus="selectAll" value="1.00" list="cavernosity_list" type="text" id="coefficient_cavernosity" class="form-control">
+            <span class="input-group-addon" id="basic-addon2">безразм.</span>
+            <datalist id="cavernosity_list">
+                <optionv-for="item in coefficient_cavernosity" :value="item"></option>                
+            </datalist>
+        </div>
+        <br>
+        Диаметр скважины:
+        <div class="input-group">            
+            <input v-on:focus="selectAll" value="215.9" type="text" id="diameter_well" class="form-control">
+            <span class="input-group-addon" id="basic-addon2">мм</span>            
+        </div>
+        <br>
+        <!-- <div class="input-group">
+            <input v-on:input="convert($event.target.value,$event.target.id)" v-on:focus="selectAll" type="text" class="form-control  mass" placeholder="тонна" aria-describedby="basic-addon2" id="tn" :value="obj.tn">
+            <span class="input-group-addon" id="basic-addon2">тн</span>
+        </div>
+        <br>
+        <div class="input-group">
+            <input v-on:input="convert($event.target.value,$event.target.id)" v-on:focus="selectAll" type="text" class="form-control  mass" placeholder="ньютон" aria-describedby="basic-addon2" id="nut" :value="obj.nut">
+            <span class="input-group-addon" id="basic-addon2">Н</span>
+        </div>
+        <br>
+        <div class="input-group">
+            <input v-on:input="convert($event.target.value,$event.target.id)" v-on:focus="selectAll" type="text" class="form-control  mass" placeholder="килоньютон" aria-describedby="basic-addon2" id="knut" :value="obj.knut">
+            <span class="input-group-addon" id="basic-addon2">кН</span>
+        </div>
+        <br> -->
+        <div class="text-right"><a href="">Формула</a></div>
+
+    </div>
+</div>
+
+<!-- Окончание html модуля -->
+<script>
+    
+    var module = new Vue({
+        el: ".module",
+        data: {
+            diameter_bit: [1,2,3,4,5],
+            coefficient_cavernosity: [],
+            diameter_well: Number
+        },
+        methods: {
+            
+            
+            // convert: function (val, id) {
+            //     count = this.id.length;
+            //     id_of = this.id.indexOf(id);
+            //     c = Big(this.const[id_of]);
+            //     val = Big(val);
+            //     result = [];
+            //     for (i = 0; i < count; i++) {
+            //         const_for = Big(this.const[i]);
+            //         result[i] = Number(val.div(c).times(const_for));
+            //     }
+
+            //     for (i = 0; i < count; i++) {                    
+            //         this.obj[this.id[i]] = result[i];                    
+            //    }
+           // },
+            selectAll: function(event){
+                setTimeout(function () {
+      	            event.target.select()
+                                        }, 0);
+            }
+        }
+    })
+</script>

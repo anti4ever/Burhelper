@@ -1,0 +1,73 @@
+<div>
+    <h3 align="center">Вес, масса</h3>
+    <p align="center"><small>Конвертер единиц измерения веса и массы</small></p>
+    <div class="module">
+        <div class="input-group">
+            <input v-on:input="convert($event.target.value,$event.target.id)" v-on:focus="selectAll" type="text" class="form-control mass" placeholder="килограмм" aria-describedby="basic-addon2" id="kg" :value="obj.kg">
+            <span class="input-group-addon" id="basic-addon2">кг</span>
+        </div>
+        <br>
+        <div class="input-group">
+            <input v-on:input="convert($event.target.value,$event.target.id)" v-on:focus="selectAll" type="text" class="form-control  mass" placeholder="тонна" aria-describedby="basic-addon2" id="tn" :value="obj.tn">
+            <span class="input-group-addon" id="basic-addon2">тн</span>
+        </div>
+        <br>
+        <div class="input-group">
+            <input v-on:input="convert($event.target.value,$event.target.id)" v-on:focus="selectAll" type="text" class="form-control  mass" placeholder="ньютон" aria-describedby="basic-addon2" id="nut" :value="obj.nut">
+            <span class="input-group-addon" id="basic-addon2">Н</span>
+        </div>
+        <br>
+        <div class="input-group">
+            <input v-on:input="convert($event.target.value,$event.target.id)" v-on:focus="selectAll" type="text" class="form-control  mass" placeholder="килоньютон" aria-describedby="basic-addon2" id="knut" :value="obj.knut">
+            <span class="input-group-addon" id="basic-addon2">кН</span>
+        </div>
+        <br>
+        <div class="text-right"><a href="">Вес, Масса</a></div>
+
+    </div>
+</div>
+
+<!-- Окончание html модуля -->
+<script>
+    /* Вес, Масса (mass)
+    Килограмм / 1 / kg
+    Тонна / 0.001 / tn
+    Ньютон / 9.8066 / nut
+    Килоньютон / 0.0098066 / knut
+    */
+    var module = new Vue({
+        el: ".module",
+        data: {
+            obj: {
+                kg: 1,
+                tn: 0.001,
+                nut: 9.8066,
+                knut: 0.0098066
+                },
+            id: ["kg", "tn", "nut", "knut"],
+            const: [1, 0.001, 9.8066, 0.0098066],
+        },
+        methods: {
+            convert: function (val, id) {
+                count = this.id.length;
+                id_of = this.id.indexOf(id);
+                c = Big(this.const[id_of]);
+                val = Big(val);
+                result = [];
+                for (i = 0; i < count; i++) {
+                    const_for = Big(this.const[i]);
+                    result[i] = Number(val.div(c).times(const_for));
+                }
+
+                for (i = 0; i < count; i++) {                    
+                    this.obj[this.id[i]] = result[i];                    
+                }
+            },
+            selectAll: function(event){
+                setTimeout(function () {
+      	            event.target.select()
+                                        }, 0);
+            }
+        }
+    })
+</script>

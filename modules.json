@@ -15,5 +15,11 @@
         "name": "Вес, масса",
         "description": "Конвертер единиц измерения массы и веса",
         "dir": "modules/mass/mass.html"
+    },
+
+    "diameter_well": {
+        "name": "Диаметр скважины / коэффициент кавернозности",
+        "description": "Пересчет: диаметр скважины / коэффициент кавернозности",
+        "dir": "modules/diameter_well/diameter_well.html"
     }
 }

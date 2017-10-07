@@ -13,4 +13,10 @@ h3 {
 
 .mainimg {
     vertical-align: bottom;
-}   
+    height: 32px;
+    width: 32px;
+}
+
+h2 {
+    margin-top: 10px;
+}
