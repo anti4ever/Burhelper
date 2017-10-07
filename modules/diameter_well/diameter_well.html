@@ -4,25 +4,25 @@
     <div class="module">
         Диаметр долота:
         <div class="input-group">            
-            <input v-on:focus="selectAll" value="215.9" list="diameter_list" type="text" id="diameter_bit" class="form-control">
+            <input autocomplete="on" v-on:focus="selectAll" :value="diameter_bit" list="diameter_list" type="text" id="diameter_bit" class="form-control">
             <span class="input-group-addon" id="basic-addon2">мм</span>
             <datalist id="diameter_list">
-                <option v-for="item in diameter_bit" :value="item"></option>                
+                <option v-for="item in diameter_bit_list" :value="item"></option>                
             </datalist>
         </div>
         <br>
         Коэффициент кавернозности:
         <div class="input-group">            
-            <input v-on:focus="selectAll" value="1.00" list="cavernosity_list" type="text" id="coefficient_cavernosity" class="form-control">
+            <input v-on:focus="selectAll" :value="coff_cav" list="cavernosity_list" type="text" id="coefficient_cavernosity" class="form-control">
             <span class="input-group-addon" id="basic-addon2">безразм.</span>
             <datalist id="cavernosity_list">
-                <optionv-for="item in coefficient_cavernosity" :value="item"></option>                
+                <optionv-for="item in coefficient_cavernosity_list" :value="item"></option>                
             </datalist>
         </div>
         <br>
         Диаметр скважины:
         <div class="input-group">            
-            <input v-on:focus="selectAll" value="215.9" type="text" id="diameter_well" class="form-control">
+            <input v-on:focus="selectAll" :value="diameter_well" type="text" id="diameter_well" class="form-control">
             <span class="input-group-addon" id="basic-addon2">мм</span>            
         </div>
         <br>
@@ -52,9 +52,12 @@
     var module = new Vue({
         el: ".module",
         data: {
-            diameter_bit: [1,2,3,4,5],
-            coefficient_cavernosity: [],
-            diameter_well: Number
+            diameter_bit_list: [46.0,59.0,76.0,93.0,97.0,98.4,112.0,118.0,120.6,132.0,139.7,146.1,151.0,163.0,165.1,171.4,187.3,190.5,200.0,212.7,215.9,222.3,242.9,244.5,250.8,269.9,295.3,304.8,311.1,320.0,349.2,374.6,393.7,444.5,490.0,508.0],
+            // diameter_bit_list: ["46.0","59.0","76.0","93.0","97.0","98.4","112.0","118.0","120.6","132.0","139.7","146.1","151.0","163.0","165.1","171.4","187.3","190.5","200.0","212.7","215.9","222.3","242.9","244.5","250.8","269.9","295.3","304.8","311.1","320.0","349.2","374.6","393.7","444.5","490.0","508.0"],
+            coefficient_cavernosity_list: [],
+            diameter_well: 215.9,
+            diameter_bit: 215.9,
+            coff_cav: 1.0
         },
         methods: {
             
