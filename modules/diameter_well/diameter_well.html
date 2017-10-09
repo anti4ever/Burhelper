@@ -4,20 +4,13 @@
     <div class="module">
         Диаметр долота:
         <div class="input-group">            
-            <input v-on:input="test($event.target.value)" v-on:focus="selectAll" :value="diameter_bit"  type="text" id="diameter_bit" class="form-control">
+            <input v-on:input="resultfunc($event.target.id, $event.target.value)" v-on:focus="selectAll" :value="diameter_bit"  type="text" id="diameter_bit" class="form-control">
             <span class="input-group-addon" id="basic-addon2">мм</span>            
         </div>
-        <!-- <div class="input-group">            
-            <input v-on:focus="selectAll" :value="diameter_bit" list="diameter_list" type="text" id="diameter_bit" class="form-control">
-            <span class="input-group-addon" id="basic-addon2">мм</span>
-            <datalist id="diameter_list">
-                <option v-for="item in diameter_bit_list" :value="item" v-html="item"></option>                
-            </datalist>
-        </div> -->
         <br>
         Коэффициент кавернозности:
         <div class="input-group">            
-            <input v-on:focus="selectAll" :value="coff_cav" list="cavernosity_list" type="text" id="coefficient_cavernosity" class="form-control">
+            <input v-on:input="resultfunc($event.target.id, $event.target.value)" v-on:focus="selectAll" :value="coff_cav" list="cavernosity_list" type="text" id="coefficient_cavernosity" class="form-control">
             <span class="input-group-addon" id="basic-addon2">безразм.</span>
             <datalist id="cavernosity_list">
                 <optionv-for="item in coefficient_cavernosity_list" :value="item" v-html="item"></option>                
@@ -29,22 +22,7 @@
             <input v-on:focus="selectAll" :value="diameter_well" type="text" id="diameter_well" class="form-control">
             <span class="input-group-addon" id="basic-addon2">мм</span>            
         </div>
-        <br>
-        <!-- <div class="input-group">
-            <input v-on:input="convert($event.target.value,$event.target.id)" v-on:focus="selectAll" type="text" class="form-control  mass" placeholder="тонна" aria-describedby="basic-addon2" id="tn" :value="obj.tn">
-            <span class="input-group-addon" id="basic-addon2">тн</span>
-        </div>
-        <br>
-        <div class="input-group">
-            <input v-on:input="convert($event.target.value,$event.target.id)" v-on:focus="selectAll" type="text" class="form-control  mass" placeholder="ньютон" aria-describedby="basic-addon2" id="nut" :value="obj.nut">
-            <span class="input-group-addon" id="basic-addon2">Н</span>
-        </div>
-        <br>
-        <div class="input-group">
-            <input v-on:input="convert($event.target.value,$event.target.id)" v-on:focus="selectAll" type="text" class="form-control  mass" placeholder="килоньютон" aria-describedby="basic-addon2" id="knut" :value="obj.knut">
-            <span class="input-group-addon" id="basic-addon2">кН</span>
-        </div>
-        <br> -->
+        <br>        
         <div class="text-right"><a href="">Формула</a></div>
 
     </div>
@@ -56,35 +34,33 @@
     var module = new Vue({
         el: ".module",
         data: {
-           // diameter_bit_list: [46.0,59.0,76.0,93.0,97.0,98.4,112.0,118.0,120.6,132.0,139.7,146.1,151.0,163.0,165.1,171.4,187.3,190.5,200.0,212.7,215.9,222.3,242.9,244.5,250.8,269.9,295.3,304.8,311.1,320.0,349.2,374.6,393.7,444.5,490.0,508.0],
             diameter_bit_list: ["46.0","59.0","76.0","93.0","97.0","98.4","112.0","118.0","120.6","132.0","139.7","146.1","151.0","163.0","165.1","171.4","187.3","190.5","200.0","212.7","215.9","222.3","242.9","244.5","250.8","269.9","295.3","304.8","311.1","320.0","349.2","374.6","393.7","444.5","490.0","508.0"],
-            coefficient_cavernosity_list: [],
+            coefficient_cavernosity_list: ["1.00","1.05","1.10","1.15","1.20","1.25","1.30","1.35","1.40","1.45","1.50","1.55","2.00","2.50","2.70","2.75","2.80","3.00"],
             diameter_well: 215.9,
-            diameter_bit: "215.9",
+            diameter_bit: 215.9,
             coff_cav: 1.0
         },
         methods: {
-            test: function(diam_bit){
-                this.diameter_bit = diam_bit;
-                console.log(this.diameter_bit);
+            resultfunc: function(id,val){
+                if (id == "diameter_bit") {
+                    d_bit = Big(val);
+                    c_cav = Big(this.coff_cav);
+                    d_well = c_cav.sqrt().times(d_bit).toFixed(2);
+                    this.diameter_well = Number(d_well);
+                    this.diameter_bit = val;
+                    //console.log("bit")
+                }
+                else {
+                    d_bit = Big(this.diameter_bit);
+                    c_cav = Big(val);
+                    d_well = c_cav.sqrt().times(d_bit).toFixed(2);
+                    this.diameter_well = Number(d_well);
+                    this.coff_cav = val;
+                    //console.log("coff")
+                }
                 
             },
-                        
-            // convert: function (val, id) {
-            //     count = this.id.length;
-            //     id_of = this.id.indexOf(id);
-            //     c = Big(this.const[id_of]);
-            //     val = Big(val);
-            //     result = [];
-            //     for (i = 0; i < count; i++) {
-            //         const_for = Big(this.const[i]);
-            //         result[i] = Number(val.div(c).times(const_for));
-            //     }
-
-            //     for (i = 0; i < count; i++) {                    
-            //         this.obj[this.id[i]] = result[i];                    
-            //    }
-           // },
+                      
             selectAll: function(event){
                 setTimeout(function () {
       	            event.target.select()
@@ -93,12 +69,25 @@
         }
     });
     
+    var escapeRegexp = $.ui.autocomplete.escapeRegex;
+    $.extend( $.ui.autocomplete, {
+    escapeRegex: function( value ) {
+        return '^' + escapeRegexp(value);
+            }
+        });
+
     $( "#diameter_bit" ).autocomplete({
                  source: module.diameter_bit_list,
                  select: function( event, ui ) {
-                     console.log(ui.item.value);
-                     module.diameter_bit = ui.item.value}
+                     module.diameter_bit = ui.item.value;
+                     module.resultfunc(event.target.id, module.diameter_bit)}
                     });
-
+    
+    $( "#coefficient_cavernosity" ).autocomplete({
+            source: module.coefficient_cavernosity_list,
+            select: function( event, ui ) {
+                 module.coff_cav = ui.item.value;
+                 module.resultfunc(event.target.id, module.coff_cav)}
+                    });
     
 </script>
