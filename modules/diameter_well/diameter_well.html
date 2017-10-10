@@ -24,6 +24,10 @@
         </div>
         <br>        
         <div class="text-right"><a href="">Формула</a></div>
+        <div>
+            <math><msub><mi>D</mi><mrow><mi>&#x441;</mi><mi>&#x43A;</mi><mi>&#x432;</mi><mo>.</mo></mrow></msub><mo>=</mo><msqrt><msub><mi>K</mi><mrow><mi>&#x43A;</mi><mi>&#x430;</mi><mi>&#x432;</mi><mo>.</mo></mrow></msub></msqrt><mo>&#xD7;</mo><msub><mi>D</mi><mrow><mi>&#x434;</mi><mi>&#x43E;</mi><mi>&#x43B;</mi><mo>.</mo></mrow></msub></math>
+        </div>
+        
 
     </div>
 </div>
@@ -40,6 +44,10 @@
             diameter_bit: 215.9,
             coff_cav: 1.0
         },
+        beforeDestroy: function(){           
+            $( "#diameter_bit" ).autocomplete("destroy");
+            $( "#coefficient_cavernosity" ).autocomplete("destroy");
+            },
         methods: {
             resultfunc: function(id,val){
                 if (id == "diameter_bit") {
@@ -60,7 +68,7 @@
                 }
                 
             },
-                      
+                                  
             selectAll: function(event){
                 setTimeout(function () {
       	            event.target.select()
@@ -68,14 +76,7 @@
             }
         }
     });
-    
-    var escapeRegexp = $.ui.autocomplete.escapeRegex;
-    $.extend( $.ui.autocomplete, {
-    escapeRegex: function( value ) {
-        return '^' + escapeRegexp(value);
-            }
-        });
-
+        
     $( "#diameter_bit" ).autocomplete({
                  source: module.diameter_bit_list,
                  select: function( event, ui ) {

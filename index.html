@@ -104,11 +104,15 @@
                 },
                 backonmain: function () {
                    if (this.seenmodulesbtn == true) {
-                       this.seenmodulesbtn = false;
+                       this.seenmodulesbtn = false;                       
                    }
                    if (this.seenmodulecase == true) {
                        this.seenmodulecase = false;
-                   };
+                       module.$destroy();
+                       //console.log("dest");
+                    };
+                    
+                
                                        
                 },
                 animateloadmodule: function () {
@@ -121,7 +125,16 @@
                     //console.log(vm.modulesinfo);
                 })
             }
-        })
+        });
+
+        //---Глобальное переназначение регулярного выражения поиска плагина jquery ui.autocomlete
+        var escapeRegexp = $.ui.autocomplete.escapeRegex;
+        $.extend ( $.ui.autocomplete, {
+        escapeRegex: function( value ) {
+        return '^' + escapeRegexp(value);
+            }
+        });
+        //--------------------------------------------------------------------------------------
     </script>
 </body>
 
