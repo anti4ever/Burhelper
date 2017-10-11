@@ -8,7 +8,7 @@
     <title>Расчеты в бурении</title>
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
     <!-- My styles -->
     <link href="style.css" rel="stylesheet">
     <!-- Подключение Animate.css -->
@@ -16,7 +16,14 @@
     <link href="jquery-ui.css" rel="stylesheet">
     <!-- jQuery JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <!-- jQuery UI для плагина Autocomlete -->
     <script src="jquery-ui.js"></script>
+    <script src="jquery.ui.autocomplete.scroll.min.js"></script>
+    <!-- MathJax для отображения формул -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]} });
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     <!-- Bootstrap JS -->
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
     <!-- Работа с числами с плавающей точкой Big.js -->
@@ -31,48 +38,42 @@
     <br>
     <div class="container" id="mainapp">
         <!--Изменение максимальной ширины на 450px (стандартно 750px) через класс "container"-->
-       <!-- Заголовок -->
+        <!-- Заголовок -->
         <div class="well well-sm text-center">
             <img src="favicon.png" class="mainimg"><b><br><a href="#">Burhelper.ru</a></b>
             <h2>Расчеты в бурении</h2>
             <small>Мини утилиты на каждый день.</small>
             <br>
         </div>
-
         <!-- Кнопка На главную страницу -->
-        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut"
-        v-on:after-enter="seenmodulecase = !seenmodulecase"
-        v-on:after-leave="seenmodulesbtn=!seenmodulesbtn">
+        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut" v-on:after-enter="seenmodulecase = !seenmodulecase"
+            v-on:after-leave="seenmodulesbtn=!seenmodulesbtn">
             <div class="well well-sm" v-show="seenmainbtn" style="animation-duration: 350ms">
                 <button v-on:click="seenfooter=!seenfooter" class="btn btn-primary btn-block">На главную страницу</button>
             </div>
         </transition>
-
         <!-- Кнопки модулей -->
-        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut"
-        v-on:after-leave="seenmainbtn=!seenmainbtn"
-        v-on:after-enter="seenfooter=!seenfooter">
-                    <div v-show="seenmodulesbtn" class="buttoncase well well-sm text-center" style="animation-duration: 350ms">
-                <button v-on:click="getmodule(value.dir)" v-for="value in modulesinfo" :dir="value.dir" :title="value.description" class="btn btn-primary btn-block" style="white-space: normal">{{value.name}}</button>
+        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut" v-on:after-leave="seenmainbtn=!seenmainbtn"
+            v-on:after-enter="seenfooter=!seenfooter">
+            <div v-show="seenmodulesbtn" class="buttoncase well well-sm text-center" style="animation-duration: 350ms">
+                <button v-on:click="getmodule(value.dir)" v-for="value in modulesinfo" :dir="value.dir" :title="value.description" class="btn btn-primary btn-block"
+                    style="white-space: normal">{{value.name}}</button>
             </div>
         </transition>
-
         <!-- Кейс модуля -->
-        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut" 
-        v-on:after-leave="seenmainbtn = !seenmainbtn"
-        v-on:after-enter="seenfooter = !seenfooter">
+        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut" v-on:after-leave="seenmainbtn = !seenmainbtn"
+            v-on:after-enter="seenfooter = !seenfooter">
             <div v-show="seenmodulecase" class="modulecase well well-sm" style="animation-duration: 350ms"></div>
         </transition>
-
         <!-- Подвал -->
-        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut"
-        v-on:after-leave="backonmain">
+        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut" v-on:after-leave="backonmain">
             <div v-show="seenfooter" class="well well-sm text-center" style="animation-duration: 350ms">
                 <p><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="color: red;"></span> Нашли ошибку:
                     <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
                 <p><span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span> Есть предложения по новым
                     <br>модулям: <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
-                <p><small>Cоздано с помощью <a href="http://getbootstrap.com">Bootstrap</a> , <a href="http://jquery.com/">jQuerty</a> и <a href="https://github.com/MikeMcl/big.js">Big.js.</a></small></p>
+                <p><small>Cоздано с помощью:<br><a href="http://getbootstrap.com">Bootstrap</a> , <a href="http://jquery.com/">jQuerty</a> , <a href="http://jqueryui.com/">jQuery UI</a> , <a href="https://github.com/MikeMcl/big.js">Big.js</a>
+                     , <a href="https://daneden.github.io/animate.css/">Animate.css</a> , <a href="https://vuejs.org">Vue.js</a> , <a href="https://www.mathjax.org">MathJax.</a></small></p>
             </div>
         </transition>
     </div>
@@ -100,23 +101,19 @@
                         $(".modulecase").load(dir);
                         this.animateloadmodule();
                     };
-
                 },
                 backonmain: function () {
-                   if (this.seenmodulesbtn == true) {
-                       this.seenmodulesbtn = false;                       
-                   }
-                   if (this.seenmodulecase == true) {
-                       this.seenmodulecase = false;
-                       module.$destroy();
-                       //console.log("dest");
+                    if (this.seenmodulesbtn == true) {
+                        this.seenmodulesbtn = false;
+                    }
+                    if (this.seenmodulecase == true) {
+                        this.seenmodulecase = false;
+                        module.$destroy();
+                        //console.log("dest");
                     };
-                    
-                
-                                       
                 },
                 animateloadmodule: function () {
-                this.seenfooter = !this.seenfooter;                
+                    this.seenfooter = !this.seenfooter;
                 }
             },
             mounted: function () {
@@ -126,12 +123,11 @@
                 })
             }
         });
-
         //---Глобальное переназначение регулярного выражения поиска плагина jquery ui.autocomlete
         var escapeRegexp = $.ui.autocomplete.escapeRegex;
-        $.extend ( $.ui.autocomplete, {
-        escapeRegex: function( value ) {
-        return '^' + escapeRegexp(value);
+        $.extend($.ui.autocomplete, {
+            escapeRegex: function (value) {
+                return '^' + escapeRegexp(value);
             }
         });
         //--------------------------------------------------------------------------------------
