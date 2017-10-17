@@ -40,7 +40,11 @@
         <!--Изменение максимальной ширины на 450px (стандартно 750px) через класс "container"-->
         <!-- Заголовок -->
         <div class="well well-sm text-center">
-            <img src="favicon.png" class="mainimg"><b><br><a href="#">Burhelper.ru</a></b>
+            <img src="favicon.png" class="mainimg">
+            <b>
+                <br>
+                <a href="#">Burhelper.ru</a>
+            </b>
             <h2>Расчеты в бурении</h2>
             <small>Мини утилиты на каждый день.</small>
             <br>
@@ -68,15 +72,68 @@
         <!-- Подвал -->
         <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut" v-on:after-leave="backonmain">
             <div v-show="seenfooter" class="well well-sm text-center" style="animation-duration: 350ms">
-                <p><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="color: red;"></span> Нашли ошибку:
-                    <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
-                <p><span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span> Есть предложения по новым
-                    <br>модулям: <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a></p>
-                <p><small>Cоздано с помощью:<br><a href="http://getbootstrap.com">Bootstrap</a> , <a href="http://jquery.com/">jQuerty</a> , <a href="http://jqueryui.com/">jQuery UI</a> , <a href="https://github.com/MikeMcl/big.js">Big.js</a>
-                     , <a href="https://daneden.github.io/animate.css/">Animate.css</a> , <a href="https://vuejs.org">Vue.js</a> , <a href="https://www.mathjax.org">MathJax.</a></small></p>
+                <p>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="color: red;"></span> Нашли ошибку:
+                    <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a>
+                </p>
+                <p>
+                    <span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span> Есть предложения по новым
+                    <br>модулям:
+                    <a href="mailto:burhelper@mail.ru">burhelper@mail.ru</a>
+                </p>
+                <p>
+                    <small>Cоздано с помощью:
+                        <br>
+                        <a href="http://getbootstrap.com">Bootstrap</a> ,
+                        <a href="http://jquery.com/">jQuerty</a> ,
+                        <a href="http://jqueryui.com/">jQuery UI</a> ,
+                        <a href="https://github.com/MikeMcl/big.js">Big.js</a>
+                        ,
+                        <a href="https://daneden.github.io/animate.css/">Animate.css</a> ,
+                        <a href="https://vuejs.org">Vue.js</a> ,
+                        <a href="https://www.mathjax.org">MathJax.</a>
+                    </small>
+                </p>
             </div>
         </transition>
     </div>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function () {
+                try {
+                    w.yaCounter44423974 = new Ya.Metrika({
+                        id: 44423974,
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true
+                    });
+                } catch (e) {}
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () {
+                    n.parentNode.insertBefore(s, n);
+                };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else {
+                f();
+            }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript>
+        <div>
+            <img src="https://mc.yandex.ru/watch/44423974" style="position:absolute; left:-9999px;" alt="" />
+        </div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+
     <!-- Создание приложения на Vue.js -->
     <script>
         // Создание основного экземпляра (главного приложения) Vue c именем "vm" с привязкой к id "maimapp"
